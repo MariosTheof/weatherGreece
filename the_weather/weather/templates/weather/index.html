@@ -1,0 +1,314 @@
+<!-- the_weather/weather/templates/weather/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Weather Greece</title>
+
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'weather/my_css.css' %}" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.css" />
+
+</head>
+
+<body>
+    <section class="hero is-bold is-info">
+
+        <div class="hero-body">
+          <nav class="level">
+            <div class="level-item">
+              <figure class="image is-128x128">
+                <img src="{% static 'weather/weatherLogo.PNG' %}">
+              </figure>
+            </div>
+            <div class="level-item">
+                <h1 class="title">
+                    What's the weather like in {{ weather_monday.city }}?
+                </h1>
+            </div>
+            <div class="level-item"></div>
+            <div class="level-item"></div>
+            <div class="level-item"></div>
+            <div class="level-item"></div>
+            <div class="level-item"></div>
+            <div class="level-item">
+              <div>
+                <h1 class="title">{{ curr_day.date }}</h1>
+                <br>
+                <h3 class="title"><strong>{{ curr_day.hour }}</strong></h3>
+              </div>
+            </div>
+            <div class="level-item"></div>
+          </nav>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-offset-4 is-4">
+
+
+                    <form method="POST">
+                      {% csrf_token %}
+                        <div class="field has-addons">
+                            <div class="control is-expanded">
+                                {{ form.name }}
+                            </div>
+                            <div class="control">
+                                <button class="button is-info">
+                                    Search
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+      <nav class="level">
+
+        <div class="level-item">
+          <div>
+            <h1 class="title">{{ weather_monday.city }}</h1>
+            <br>
+            <h2 class="subtitle"> {{ curr_day.current_temperature|floatformat:"0" }} ° C</h2>
+          </div>
+          <figure class="icons">
+              <canvas class="{{ curr_day.icon }}" width="256" height="256"></canvas>
+          </figure>
+
+        </div>
+
+
+
+
+      </nav>
+    </section>
+
+    <section class="section">
+
+            <div class="columns">
+                <!--- Monday -->
+                <div class="column is-flex">
+
+
+                    <div id="{{ weather_monday.today }}" class="box">
+                        <article class="media">
+                            <div class="media-left">
+                                <figure class="icons">
+                                    <canvas class="{{ weather_monday.icon }}" width="64" height="64"></canvas>
+                                </figure>
+                            </div>
+                            <div class="media-content">
+                                <div class="content">
+                                    <p>
+                                        <span class="title">{{ weather_monday.day }}</span>
+                                        <br>
+                                        <span class="subtitle">{{ weather_monday.temperatureLow|floatformat:"0"  }} - {{ weather_monday.temperatureHigh|floatformat:"0"  }}° C</span>
+                                        <br> {{ weather_monday.summary }}
+                                    </p>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+
+
+                </div>
+                <!--- Tuesday -->
+                <div class="column is-flex">
+
+
+                    <div id="{{ weather_tuesday.today }}" class="box">
+                        <article class="media">
+                            <div class="media-left">
+                              <figure class="icons">
+                                  <canvas class="{{ weather_tuesday.icon }}" width="64" height="64"></canvas>
+                              </figure>
+                            </div>
+                            <div class="media-content">
+                                <div class="content">
+                                    <p>
+                                        <span class="title">{{ weather_tuesday.day }}</span>
+                                        <br>
+                                        <span class="subtitle">{{ weather_tuesday.temperatureLow|floatformat:"0"  }} - {{ weather_tuesday.temperatureHigh|floatformat:"0"  }}° C</span>
+                                        <br> {{ weather_tuesday.summary }}
+                                    </p>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+
+
+                </div>
+                <!-- Wednesday -->
+                <div class="column is-flex">
+
+
+                    <div id="{{ weather_wednesday.today }}" class="box">
+                        <article class="media">
+                            <div class="media-left">
+                              <figure class="icons">
+                                  <canvas class="{{ weather_wednesday.icon }}" width="64" height="64"></canvas>
+                              </figure>
+                            </div>
+                            <div class="media-content">
+                                <div class="content">
+                                    <p>
+                                        <span class="title">{{ weather_wednesday.day }}</span>
+                                        <br>
+                                        <span class="subtitle">{{ weather_wednesday.temperatureLow|floatformat:"0"  }} - {{ weather_wednesday.temperatureHigh|floatformat:"0"  }}° C</span>
+                                        <br> {{ weather_wednesday.summary }}
+                                    </p>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+
+
+                </div>
+                <!-- Thursday -->
+                <div class="column is-flex">
+
+
+                    <div id="{{ weather_thursday.today }}" class="box">
+                        <article class="media">
+                            <div class="media-left">
+                              <figure class="icons">
+                                  <canvas class="{{ weather_thursday.icon }}" width="64" height="64"></canvas>
+                              </figure>
+                            </div>
+                            <div class="media-content">
+                                <div class="content">
+                                    <p>
+                                        <span class="title">{{ weather_thursday.day }}</span>
+                                        <br>
+                                        <span class="subtitle">{{ weather_thursday.temperatureLow|floatformat:"0"  }} - {{ weather_thursday.temperatureHigh|floatformat:"0"  }}° C</span>
+                                        <br> {{ weather_thursday.summary }}
+                                    </p>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+
+
+                </div>
+                <!--Friday -->
+                <div class="column is-flex">
+
+
+                    <div id="{{ weather_friday.today }}" class="box">
+                        <article class="media">
+                            <div class="media-left">
+                              <figure class="icons">
+                                  <canvas class="{{ weather_friday.icon }}" width="64" height="64"></canvas>
+                              </figure>
+                            </div>
+                            <div class="media-content">
+                                <div class="content">
+                                    <p>
+                                        <span class="title">{{ weather_friday.day }}</span>
+                                        <br>
+                                        <span class="subtitle">{{ weather_friday.temperatureLow|floatformat:"0"  }} - {{ weather_friday.temperatureHigh|floatformat:"0"  }}° C</span>
+                                        <br> {{ weather_friday.summary }}
+                                    </p>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+
+
+                </div>
+                <!-- Saturday -->
+                <div class="column is-flex">
+
+
+                    <div id="{{ weather_saturday.today }}" class="box">
+                        <article class="media">
+                            <div class="media-left">
+                              <figure class="icons">
+                                  <canvas class="{{ weather_saturday.icon }}" width="64" height="64"></canvas>
+                              </figure>
+                            </div>
+                            <div class="media-content">
+                                <div class="content">
+                                    <p>
+                                        <span class="title">{{ weather_saturday.day }}</span>
+                                        <br>
+                                        <span class="subtitle">{{ weather_saturday.temperatureLow|floatformat:"0"  }} - {{ weather_saturday.temperatureHigh|floatformat:"0"  }}° C</span>
+                                        <br> {{ weather_saturday.summary }}
+                                    </p>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+
+
+                </div>
+                <!-- Sunday -->
+                <div class="column is-flex">
+
+
+                    <div id="{{ weather_sunday.today }}" class="box">
+                        <article class="media">
+                            <div class="media-left">
+                              <figure class="icons">
+                                  <canvas class="{{ weather_sunday.icon }}" width="64" height="64"></canvas>
+                              </figure>
+                            </div>
+                            <div class="media-content">
+                                <div class="content">
+                                    <p>
+                                        <span class="title">{{ weather_sunday.day }}</span>
+                                        <br>
+                                        <span class="subtitle">{{ weather_sunday.temperatureLow|floatformat:"0"  }} - {{ weather_sunday.temperatureHigh|floatformat:"0"  }}° C</span>
+                                        <br> {{ weather_sunday.summary }}
+                                    </p>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+
+
+                </div>
+
+            </div>
+
+    </section>
+
+    <footer class="footer">
+    </footer>
+
+    <script src="https://rawgithub.com/darkskyapp/skycons/master/skycons.js"></script>
+
+    <script>
+      var icons = new Skycons({'color' : '#64B5F6'}),
+          list  = [
+            "clear-day", "clear-night", "partly-cloudy-day",
+            "partly-cloudy-night", "cloudy", "rain", "sleet", "snow", "wind",
+            "fog"
+          ],
+          i;
+      for(i = list.length; i--; ) {
+        var weatherType = list[i],
+            elements = document.getElementsByClassName( weatherType );
+        for (e = elements.length; e--;){
+            icons.set( elements[e], weatherType );
+        }
+      }
+      icons.play();
+    </script>
+
+
+
+
+
+</body>
+</html>
