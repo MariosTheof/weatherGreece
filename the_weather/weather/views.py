@@ -50,13 +50,13 @@ def index(request):
             if ",Greece" in form.cleaned_data['name']:
                 city = form.cleaned_data['name'] # city we want to predict
             else:
-                city = form.cleaned_data['name'] + ',Greece'
+                city = form.cleaned_data['name'] + ', Greece'
             form = CityForm() # so the name does not stay after the search
 
     # GET method when the page is loaded and we want an empty form
     if request.method == 'GET':
         form = CityForm()
-        city = 'Athens,Greece'
+        city = 'Athens, Greece'
 
 
     # geolocator to get coordinates of places
@@ -66,7 +66,7 @@ def index(request):
     lat = str(location.latitude)
     lon = str(location.longitude)
 
-    url = 'https://api.darksky.net/forecast/36b08b8c29fa105d710bd4c985dfff38/' + lat + ',' + lon + '?units=auto'
+    url = 'https://api.darksky.net/forecast/your_api_key/' + lat + ',' + lon + '?lang=el&units=auto'
     response = requests.get(url) # request the API data and convert the JSON to Python data
     # convert requst to json
     json = response.json()

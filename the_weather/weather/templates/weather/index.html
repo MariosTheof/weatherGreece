@@ -15,7 +15,7 @@
 </head>
 
 <body>
-    <section class="hero is-bold is-info">
+    <section class="hero is-bold is-info"> <!--Header-->
 
         <div class="hero-body">
           <nav class="level">
@@ -46,7 +46,7 @@
         </div>
     </section>
 
-    <section class="section">
+    <section class="section">  <!-- Search box -->
         <div class="container">
             <div class="columns">
                 <div class="column is-offset-4 is-4">
@@ -72,14 +72,14 @@
         </div>
     </section>
 
-    <section class="section">
+    <section class="section"> <!-- Large current icon -->
       <nav class="level">
 
         <div class="level-item">
           <div>
             <h1 class="title">{{ weather_monday.city }}</h1>
             <br>
-            <h2 class="subtitle"> {{ curr_day.current_temperature|floatformat:"0" }} ° C</h2>
+            <h2 class="title"> {{ curr_day.current_temperature|floatformat:"0" }} ° C</h2>
           </div>
           <figure class="icons">
               <canvas class="{{ curr_day.icon }}" width="256" height="256"></canvas>
@@ -93,11 +93,11 @@
       </nav>
     </section>
 
-    <section class="section">
-
-            <div class="columns">
+    <section class="section"> <!-- Days of the week in boxes -->
+      <nav class="level">
+            <div class="columns is-multiline is-centered">
                 <!--- Monday -->
-                <div class="column is-flex">
+                <div class="column is-narrow">
 
 
                     <div id="{{ weather_monday.today }}" class="box">
@@ -112,7 +112,7 @@
                                     <p>
                                         <span class="title">{{ weather_monday.day }}</span>
                                         <br>
-                                        <span class="subtitle">{{ weather_monday.temperatureLow|floatformat:"0"  }} - {{ weather_monday.temperatureHigh|floatformat:"0"  }}° C</span>
+                                        <span class="subtitle"><strong>{{ weather_monday.temperatureLow|floatformat:"0"  }} - {{ weather_monday.temperatureHigh|floatformat:"0"  }}° C</strong></span>
                                         <br> {{ weather_monday.summary }}
                                     </p>
                                 </div>
@@ -123,7 +123,7 @@
 
                 </div>
                 <!--- Tuesday -->
-                <div class="column is-flex">
+                <div class="column is-narrow">
 
 
                     <div id="{{ weather_tuesday.today }}" class="box">
@@ -138,7 +138,7 @@
                                     <p>
                                         <span class="title">{{ weather_tuesday.day }}</span>
                                         <br>
-                                        <span class="subtitle">{{ weather_tuesday.temperatureLow|floatformat:"0"  }} - {{ weather_tuesday.temperatureHigh|floatformat:"0"  }}° C</span>
+                                        <span class="subtitle"><strong>{{ weather_tuesday.temperatureLow|floatformat:"0"  }} - {{ weather_tuesday.temperatureHigh|floatformat:"0"  }}° C</strong></span>
                                         <br> {{ weather_tuesday.summary }}
                                     </p>
                                 </div>
@@ -149,7 +149,7 @@
 
                 </div>
                 <!-- Wednesday -->
-                <div class="column is-flex">
+                <div class="column is-narrow">
 
 
                     <div id="{{ weather_wednesday.today }}" class="box">
@@ -164,7 +164,7 @@
                                     <p>
                                         <span class="title">{{ weather_wednesday.day }}</span>
                                         <br>
-                                        <span class="subtitle">{{ weather_wednesday.temperatureLow|floatformat:"0"  }} - {{ weather_wednesday.temperatureHigh|floatformat:"0"  }}° C</span>
+                                        <span class="subtitle"><strong>{{ weather_wednesday.temperatureLow|floatformat:"0"  }} - {{ weather_wednesday.temperatureHigh|floatformat:"0"  }}° C</strong></span>
                                         <br> {{ weather_wednesday.summary }}
                                     </p>
                                 </div>
@@ -175,7 +175,7 @@
 
                 </div>
                 <!-- Thursday -->
-                <div class="column is-flex">
+                <div class="column is-narrow">
 
 
                     <div id="{{ weather_thursday.today }}" class="box">
@@ -190,7 +190,7 @@
                                     <p>
                                         <span class="title">{{ weather_thursday.day }}</span>
                                         <br>
-                                        <span class="subtitle">{{ weather_thursday.temperatureLow|floatformat:"0"  }} - {{ weather_thursday.temperatureHigh|floatformat:"0"  }}° C</span>
+                                        <span class="subtitle"><strong>{{ weather_thursday.temperatureLow|floatformat:"0"  }} - {{ weather_thursday.temperatureHigh|floatformat:"0"  }}° C</strong></span>
                                         <br> {{ weather_thursday.summary }}
                                     </p>
                                 </div>
@@ -201,7 +201,7 @@
 
                 </div>
                 <!--Friday -->
-                <div class="column is-flex">
+                <div class="column is-narrow">
 
 
                     <div id="{{ weather_friday.today }}" class="box">
@@ -216,7 +216,7 @@
                                     <p>
                                         <span class="title">{{ weather_friday.day }}</span>
                                         <br>
-                                        <span class="subtitle">{{ weather_friday.temperatureLow|floatformat:"0"  }} - {{ weather_friday.temperatureHigh|floatformat:"0"  }}° C</span>
+                                        <span class="subtitle"><strong>{{ weather_friday.temperatureLow|floatformat:"0"  }} - {{ weather_friday.temperatureHigh|floatformat:"0"  }}° C</strong></span>
                                         <br> {{ weather_friday.summary }}
                                     </p>
                                 </div>
@@ -227,7 +227,7 @@
 
                 </div>
                 <!-- Saturday -->
-                <div class="column is-flex">
+                <div class="column is-narrow">
 
 
                     <div id="{{ weather_saturday.today }}" class="box">
@@ -242,7 +242,7 @@
                                     <p>
                                         <span class="title">{{ weather_saturday.day }}</span>
                                         <br>
-                                        <span class="subtitle">{{ weather_saturday.temperatureLow|floatformat:"0"  }} - {{ weather_saturday.temperatureHigh|floatformat:"0"  }}° C</span>
+                                        <span class="subtitle"><strong>{{ weather_saturday.temperatureLow|floatformat:"0"  }} - {{ weather_saturday.temperatureHigh|floatformat:"0"  }}° C</strong></span>
                                         <br> {{ weather_saturday.summary }}
                                     </p>
                                 </div>
@@ -253,7 +253,7 @@
 
                 </div>
                 <!-- Sunday -->
-                <div class="column is-flex">
+                <div class="column is-narrow">
 
 
                     <div id="{{ weather_sunday.today }}" class="box">
@@ -268,7 +268,7 @@
                                     <p>
                                         <span class="title">{{ weather_sunday.day }}</span>
                                         <br>
-                                        <span class="subtitle">{{ weather_sunday.temperatureLow|floatformat:"0"  }} - {{ weather_sunday.temperatureHigh|floatformat:"0"  }}° C</span>
+                                        <span class="subtitle"><strong>{{ weather_sunday.temperatureLow|floatformat:"0"  }} - {{ weather_sunday.temperatureHigh|floatformat:"0"  }}° C</strong></span>
                                         <br> {{ weather_sunday.summary }}
                                     </p>
                                 </div>
@@ -280,7 +280,7 @@
                 </div>
 
             </div>
-
+      </nav>
     </section>
 
     <footer class="footer">
