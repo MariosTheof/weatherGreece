@@ -6,7 +6,7 @@ from django.shortcuts import render
 from geopy.geocoders import Nominatim
 from .models import City
 from .forms import CityForm
-
+import pytz
 
 def weekday_setter():
 
@@ -71,8 +71,8 @@ def index(request):
     # convert requst to json
     json = response.json()
 
-    date = dt.datetime.now().strftime("%d/%m/%Y")
-    hour = dt.datetime.now().strftime("%H:%M")
+    date = dt.datetime.now(pytz.timezone('Europe/Athens')).strftime("%d/%m/%Y")
+    hour = dt.datetime.now(pytz.timezone('Europe/Athens')).strftime("%H:%M")
 
     monday, tuesday, wednesday, thursday, friday, saturday, sunday, \
     today_m, today_tues, today_w, today_thur, today_fr, today_sat, today_sun = weekday_setter()
@@ -134,11 +134,20 @@ def index(request):
         'icon' : json['daily']['data'][sunday]['icon']
     }
 
+    suggestion = " "
+    if json['currently']['icon'] == "rain" or json['currently']['icon'] == "sleet":
+        suggestion = "Make sure to take an umbrella!"
+
+    if "wind" in json['currently']['icon']:
+        suggestion = "Don't forget your jacket!"
+
+
     curr_day ={
         'current_temperature' : json['currently']['temperature'],
         'icon' : json['currently']['icon'],
         'date' : date,
-        'hour' : hour
+        'hour' : hour,
+        'suggestion' : suggestion
     }
 
     context = { 'curr_day' : curr_day,

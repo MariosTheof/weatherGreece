@@ -72,7 +72,7 @@
         </div>
     </section>
 
-    <section class="section"> <!-- Large current icon -->
+    <section class="section"> <!-- Large 'current' icon -->
       <nav class="level">
 
         <div class="level-item">
@@ -80,6 +80,8 @@
             <h1 class="title">{{ weather_monday.city }}</h1>
             <br>
             <h2 class="title"> {{ curr_day.current_temperature|floatformat:"0" }} ° C</h2>
+            <br>
+            <h3 class="subtitle">{{ curr_day.suggestion }}</h3>
           </div>
           <figure class="icons">
               <canvas class="{{ curr_day.icon }}" width="256" height="256"></canvas>
