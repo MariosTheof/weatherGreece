@@ -6,7 +6,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Weather Greece</title>
+
+    {% load i18n %}
+    <title>{% trans 'Weather Greece' %}</title>
 
     {% load static %}
     <link rel="stylesheet" href="{% static 'weather/my_css.css' %}" />
@@ -26,7 +28,7 @@
             </div>
             <div class="level-item">
                 <h1 class="title">
-                    What's the weather like in {{ weather_monday.city }}?
+                  {% trans 'What is the weather like in' %} {{ weather_monday.city }}
                 </h1>
             </div>
             <div class="level-item"></div>
@@ -60,7 +62,7 @@
                             </div>
                             <div class="control">
                                 <button class="button is-info">
-                                    Search
+                                    {% trans 'Search' %}
                                 </button>
                             </div>
                         </div>
@@ -77,12 +79,13 @@
 
         <div class="level-item">
           <div>
-            <h1 class="title">{{ weather_monday.city }}</h1>
+            <h1 class="title">{{ weather_monday.city }}  </h1>
             <br>
             <h2 class="title"> {{ curr_day.current_temperature|floatformat:"0" }} ° C</h2>
             <br>
             <h3 class="subtitle">{{ curr_day.suggestion }}</h3>
           </div>
+
           <figure class="icons">
               <canvas class="{{ curr_day.icon }}" width="256" height="256"></canvas>
           </figure>
@@ -112,9 +115,9 @@
                             <div class="media-content">
                                 <div class="content">
                                     <p>
-                                        <span class="title">{{ weather_monday.day }}</span>
+                                        <span class="title">{% trans 'Monday' %}</span>
                                         <br>
-                                        <span class="subtitle"><strong>{{ weather_monday.temperatureLow|floatformat:"0"  }} - {{ weather_monday.temperatureHigh|floatformat:"0"  }}° C</strong></span>
+                                        <span class="subtitle"><strong>{{ weather_monday.temperatureLow|floatformat:"0"  }} - {{ weather_monday.temperatureHigh|floatformat:"0"  }}° {% trans 'C' %}</strong></span>
                                         <br> {{ weather_monday.summary }}
                                     </p>
                                 </div>
@@ -138,9 +141,9 @@
                             <div class="media-content">
                                 <div class="content">
                                     <p>
-                                        <span class="title">{{ weather_tuesday.day }}</span>
+                                        <span class="title">{% trans 'Tuesday' %}</span>
                                         <br>
-                                        <span class="subtitle"><strong>{{ weather_tuesday.temperatureLow|floatformat:"0"  }} - {{ weather_tuesday.temperatureHigh|floatformat:"0"  }}° C</strong></span>
+                                        <span class="subtitle"><strong>{{ weather_tuesday.temperatureLow|floatformat:"0"  }} - {{ weather_tuesday.temperatureHigh|floatformat:"0"  }}° {%trans 'C' %}</strong></span>
                                         <br> {{ weather_tuesday.summary }}
                                     </p>
                                 </div>
@@ -164,9 +167,9 @@
                             <div class="media-content">
                                 <div class="content">
                                     <p>
-                                        <span class="title">{{ weather_wednesday.day }}</span>
+                                        <span class="title">{% trans 'Wednesday'%}</span>
                                         <br>
-                                        <span class="subtitle"><strong>{{ weather_wednesday.temperatureLow|floatformat:"0"  }} - {{ weather_wednesday.temperatureHigh|floatformat:"0"  }}° C</strong></span>
+                                        <span class="subtitle"><strong>{{ weather_wednesday.temperatureLow|floatformat:"0"  }} - {{ weather_wednesday.temperatureHigh|floatformat:"0"  }}° {% trans 'C' %}</strong></span>
                                         <br> {{ weather_wednesday.summary }}
                                     </p>
                                 </div>
@@ -190,9 +193,9 @@
                             <div class="media-content">
                                 <div class="content">
                                     <p>
-                                        <span class="title">{{ weather_thursday.day }}</span>
+                                        <span class="title">{% trans 'Thursday'%}</span>
                                         <br>
-                                        <span class="subtitle"><strong>{{ weather_thursday.temperatureLow|floatformat:"0"  }} - {{ weather_thursday.temperatureHigh|floatformat:"0"  }}° C</strong></span>
+                                        <span class="subtitle"><strong>{{ weather_thursday.temperatureLow|floatformat:"0"  }} - {{ weather_thursday.temperatureHigh|floatformat:"0"  }}° {% trans 'C' %}</strong></span>
                                         <br> {{ weather_thursday.summary }}
                                     </p>
                                 </div>
@@ -216,9 +219,9 @@
                             <div class="media-content">
                                 <div class="content">
                                     <p>
-                                        <span class="title">{{ weather_friday.day }}</span>
+                                        <span class="title">{% trans 'Friday' %}</span>
                                         <br>
-                                        <span class="subtitle"><strong>{{ weather_friday.temperatureLow|floatformat:"0"  }} - {{ weather_friday.temperatureHigh|floatformat:"0"  }}° C</strong></span>
+                                        <span class="subtitle"><strong>{{ weather_friday.temperatureLow|floatformat:"0"  }} - {{ weather_friday.temperatureHigh|floatformat:"0"  }}° {% trans 'C' %}</strong></span>
                                         <br> {{ weather_friday.summary }}
                                     </p>
                                 </div>
@@ -242,9 +245,9 @@
                             <div class="media-content">
                                 <div class="content">
                                     <p>
-                                        <span class="title">{{ weather_saturday.day }}</span>
+                                        <span class="title">{% trans 'Saturday'%}</span>
                                         <br>
-                                        <span class="subtitle"><strong>{{ weather_saturday.temperatureLow|floatformat:"0"  }} - {{ weather_saturday.temperatureHigh|floatformat:"0"  }}° C</strong></span>
+                                        <span class="subtitle"><strong>{{ weather_saturday.temperatureLow|floatformat:"0"  }} - {{ weather_saturday.temperatureHigh|floatformat:"0"  }}° {%trans 'C'%}</strong></span>
                                         <br> {{ weather_saturday.summary }}
                                     </p>
                                 </div>
@@ -268,9 +271,9 @@
                             <div class="media-content">
                                 <div class="content">
                                     <p>
-                                        <span class="title">{{ weather_sunday.day }}</span>
+                                        <span class="title">{%trans 'Sunday'%}</span>
                                         <br>
-                                        <span class="subtitle"><strong>{{ weather_sunday.temperatureLow|floatformat:"0"  }} - {{ weather_sunday.temperatureHigh|floatformat:"0"  }}° C</strong></span>
+                                        <span class="subtitle"><strong>{{ weather_sunday.temperatureLow|floatformat:"0"  }} - {{ weather_sunday.temperatureHigh|floatformat:"0"  }}° {%trans 'C'%}</strong></span>
                                         <br> {{ weather_sunday.summary }}
                                     </p>
                                 </div>

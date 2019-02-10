@@ -1,0 +1,77 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-02-10 13:57+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: the_weather/settings.py:110
+msgid "English"
+msgstr ""
+
+#: the_weather/settings.py:111
+msgid "Greek"
+msgstr ""
+
+#: weather/templates/weather/index.html:11
+msgid "Weather Greece"
+msgstr "Ο καιρός στην Ελλάδα"
+
+#: weather/templates/weather/index.html:31
+msgid "What is the weather like in"
+msgstr "Τι καιρό κάνει;  "
+
+#: weather/templates/weather/index.html:65
+msgid "Search"
+msgstr "Αναζήτηση"
+
+#: weather/templates/weather/index.html:117
+msgid "Monday"
+msgstr "Δευτέρα"
+
+#: weather/templates/weather/index.html:119
+#: weather/templates/weather/index.html:145
+#: weather/templates/weather/index.html:171
+#: weather/templates/weather/index.html:197
+#: weather/templates/weather/index.html:223
+#: weather/templates/weather/index.html:249
+#: weather/templates/weather/index.html:275
+msgid "C"
+msgstr ""
+
+#: weather/templates/weather/index.html:143
+msgid "Tuesday"
+msgstr "Τρίτη"
+
+#: weather/templates/weather/index.html:169
+msgid "Wednesday"
+msgstr "Τετάρτη"
+
+#: weather/templates/weather/index.html:195
+msgid "Thursday"
+msgstr "Πέμπτη"
+
+#: weather/templates/weather/index.html:221
+msgid "Friday"
+msgstr "Παρασκευή"
+
+#: weather/templates/weather/index.html:247
+msgid "Saturday"
+msgstr "Σάββατο"
+
+#: weather/templates/weather/index.html:273
+msgid "Sunday"
+msgstr "Κυριακή"

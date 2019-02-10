@@ -2,10 +2,12 @@
 
 import requests
 import datetime as dt
+from translate import Translator
 from django.shortcuts import render
 from geopy.geocoders import Nominatim
 from .models import City
 from .forms import CityForm
+from django.http import HttpResponse
 import pytz
 
 def weekday_setter():
@@ -40,6 +42,8 @@ def weekday_setter():
     return monday, tuesday, wednesday, thursday, friday, saturday, sunday, \
     today_m, today_tues, today_w, today_thur, today_fr, today_sat, today_sun
 
+
+
 def index(request):
 
     # If something was typed in the serach bar, then do a
@@ -50,7 +54,7 @@ def index(request):
             if ",Greece" in form.cleaned_data['name']:
                 city = form.cleaned_data['name'] # city we want to predict
             else:
-                city = form.cleaned_data['name'] + ', Greece'
+                city = form.cleaned_data['name'] + ', Greece '
             form = CityForm() # so the name does not stay after the search
 
     # GET method when the page is loaded and we want an empty form
@@ -66,9 +70,19 @@ def index(request):
     lat = str(location.latitude)
     lon = str(location.longitude)
 
-    url = 'https://api.darksky.net/forecast/your_api_key/' + lat + ',' + lon + '?lang=el&units=auto'
+    # language selector for the summmaries
+    if request.LANGUAGE_CODE == "el":
+        language = "el"
+        # Για να επιστρέφει την ελληνική ονομασία της πόλης
+        translator = Translator(to_lang="greek")
+        translation = translator.translate(city)
+        city = translation
+    else:
+        language = "en"
+
+    url = 'https://api.darksky.net/forecast/api_key/' + lat + ',' + lon + '?lang=' + language + '&units=auto'
     response = requests.get(url) # request the API data and convert the JSON to Python data
-    # convert requst to json
+    # convert request to json
     json = response.json()
 
     date = dt.datetime.now(pytz.timezone('Europe/Athens')).strftime("%d/%m/%Y")
@@ -86,7 +100,6 @@ def index(request):
         'icon' : json['daily']['data'][monday]['icon']
     }
     weather_tuesday = {
-        'day' : 'Tuesday',
         'today' : today_tues,
         'temperatureHigh' : json['daily']['data'][tuesday]['temperatureHigh'],
         'temperatureLow' : json['daily']['data'][tuesday]['temperatureLow'],
@@ -94,7 +107,6 @@ def index(request):
         'icon' : json['daily']['data'][tuesday]['icon']
     }
     weather_wednesday = {
-        'day' : 'Wednesday',
         'today' : today_w,
         'temperatureHigh' : json['daily']['data'][wednesday]['temperatureHigh'],
         'temperatureLow' : json['daily']['data'][wednesday]['temperatureLow'],
@@ -102,7 +114,6 @@ def index(request):
         'icon' : json['daily']['data'][wednesday]['icon']
     }
     weather_thursday = {
-        'day' : 'Thursday',
         'today' : today_thur,
         'temperatureHigh' : json['daily']['data'][thursday]['temperatureHigh'],
         'temperatureLow' : json['daily']['data'][thursday]['temperatureLow'],
@@ -110,7 +121,6 @@ def index(request):
         'icon' : json['daily']['data'][thursday]['icon']
     }
     weather_friday = {
-        'day' : 'Friday',
         'today' : today_fr,
         'temperatureHigh' : json['daily']['data'][friday]['temperatureHigh'],
         'temperatureLow' : json['daily']['data'][friday]['temperatureLow'],
@@ -118,7 +128,6 @@ def index(request):
         'icon' : json['daily']['data'][friday]['icon']
     }
     weather_saturday = {
-        'day' : 'Saturday',
         'today' : today_sat,
         'temperatureHigh' : json['daily']['data'][saturday]['temperatureHigh'],
         'temperatureLow' : json['daily']['data'][saturday]['temperatureLow'],
@@ -126,7 +135,6 @@ def index(request):
         'icon' : json['daily']['data'][saturday]['icon']
     }
     weather_sunday = {
-        'day' : 'Sunday',
         'today' : today_sun,
         'temperatureHigh' : json['daily']['data'][sunday]['temperatureHigh'],
         'temperatureLow' : json['daily']['data'][sunday]['temperatureLow'],
@@ -165,4 +173,4 @@ def index(request):
     return render(request, 'weather/index.html', context) #returns the index.html template
 
 
-# https://api.darksky.net/forecast/36b08b8c29fa105d710bd4c985dfff38/37.8267,-122.4233
+# https://api.darksky.net/forecast/api_key/37.8267,-122.4233
