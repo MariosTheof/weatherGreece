@@ -19,33 +19,41 @@
 <body>
     <section class="hero is-bold is-info"> <!--Header-->
 
-        <div class="hero-body">
+        <div class="hero-head">
           <nav class="level">
-            <div class="level-item">
-              <figure class="image is-128x128">
-                <img src="{% static 'weather/weatherLogo.PNG' %}">
-              </figure>
-            </div>
-            <div class="level-item">
-                <h1 class="title">
-                  {% trans 'What is the weather like in' %} {{ weather_monday.city }}
-                </h1>
-            </div>
-            <div class="level-item"></div>
-            <div class="level-item"></div>
-            <div class="level-item"></div>
-            <div class="level-item"></div>
-            <div class="level-item"></div>
-            <div class="level-item">
-              <div>
-                <h1 class="title">{{ curr_day.date }}</h1>
-                <br>
-                <h3 class="title"><strong>{{ curr_day.hour }}</strong></h3>
+
+              <div class="level-left">
+                <div class="columns">
+
+                <div class="column">
+                    <figure class="image is-128x128 is-4by5">
+                      <img src="{% static 'weather/weatherLogo.PNG' %}">
+                    </figure>
+                </div>
+
+                <div class="column is-narrow is-offset-2">
+
+                    <p class="title"> {% trans 'What is the weather like in' %} </p>
+                    <p class="subtitle"> {{ weather_monday.city }} </p>
+                </div>
+
               </div>
             </div>
-            <div class="level-item"></div>
+
+            <div class="level-right">
+                <div class="level-item has-text-centered">
+                  <div>
+                    <p class="subtitle is-5"><strong>{{ curr_day.date }}</strong></h>
+                    <p class="subtitle"><strong>{{ curr_day.hour }}</strong></p>
+                  </div>
+              </div>
+              <div class="level-item"></div>
+            </div>
           </nav>
         </div>
+
+
+
     </section>
 
     <section class="section">  <!-- Search box -->
@@ -78,22 +86,22 @@
       <nav class="level">
 
         <div class="level-item">
-          <div>
-            <h1 class="title">{{ weather_monday.city }}  </h1>
-            <br>
-            <h2 class="title"> {{ curr_day.current_temperature|floatformat:"0" }} ° C</h2>
-            <br>
-            <h3 class="subtitle">{{ curr_day.suggestion }}</h3>
+          <nav class="level">
+          <div class="level-item has-text-centered">
+            <div>
+              <p class="title">{{ weather_monday.city }}  </p>
+              <p class="title"> {{ curr_day.current_temperature|floatformat:"0" }} ° C</p>
+              <br>
+              <p class="subtitle">{{ curr_day.suggestion }}</p>
+            </div>
           </div>
-
+          <div class="level-item">
           <figure class="icons">
               <canvas class="{{ curr_day.icon }}" width="256" height="256"></canvas>
           </figure>
-
         </div>
-
-
-
+        </nav>
+        </div>
 
       </nav>
     </section>
