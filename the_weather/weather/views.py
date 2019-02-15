@@ -144,10 +144,18 @@ def index(request):
 
     suggestion = " "
     if json['currently']['icon'] == "rain" or json['currently']['icon'] == "sleet":
-        suggestion = "Make sure to take an umbrella!"
+        if language == "en":
+            suggestion = "Make sure to take an umbrella!"
+        else:
+            suggestion = "Μην ξεχάσεις την ομπρέλα σου!"
 
     if "wind" in json['currently']['icon']:
-        suggestion = "Don't forget your jacket!"
+        if language == "en":
+            suggestion = "Don't forget your jacket!"
+        else:
+            suggestion = "Μην ξεχάσεις την ζακέτα σου!"
+
+
 
 
     curr_day ={

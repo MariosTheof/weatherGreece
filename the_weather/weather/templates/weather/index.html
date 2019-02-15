@@ -13,6 +13,7 @@
     {% load static %}
     <link rel="stylesheet" href="{% static 'weather/my_css.css' %}" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.css" />
+    <link rel="tab icon" type="image/png" href="{% static "weather/weatherLogoTab.PNG" %}" />
 
 </head>
 
@@ -22,21 +23,19 @@
         <div class="hero-head">
           <nav class="level">
 
-              <div class="level-left">
-                <div class="columns">
+            <div class="level-left">
+              <div class="level-item">
 
-                <div class="column">
-                    <figure class="image is-128x128 is-4by5">
-                      <img src="{% static 'weather/weatherLogo.PNG' %}">
-                    </figure>
-                </div>
+                  <figure class="image is-128x128 is-4by5">
+                    <img src="{% static 'weather/weatherLogo.PNG' %}">
+                  </figure>
 
-                <div class="column is-narrow is-offset-2">
-
-                    <p class="title"> {% trans 'What is the weather like in' %} </p>
-                    <p class="subtitle"> {{ weather_monday.city }} </p>
-                </div>
-
+              </div>
+            </div>
+            <div class="level-item has-text-centered ">
+              <div>
+                <p class="title"> {% trans 'What is the weather like in' %} </p>
+                <p> {{ weather_monday.city }} </p>
               </div>
             </div>
 
@@ -56,8 +55,30 @@
 
     </section>
 
-    <section class="section">  <!-- Search box -->
-        <div class="container">
+    <section class="section"> <!-- Large 'current' icon -->
+      <nav class="level">
+
+          <div class="level-item">
+            <nav class="level">
+              <div class="level-item has-text-centered">
+                <div>
+                  <p class="title">{{ weather_monday.city }}  </p>
+                  <p class="title"> {{ curr_day.current_temperature|floatformat:"0" }} ° C</p>
+                  <br>
+                  <p class="subtitle">{{ curr_day.suggestion }}</p>
+                </div>
+              </div>
+            <div class="level-item">
+              <figure class="icons">
+                  <canvas class="{{ curr_day.icon }}" width="150" height="150"></canvas>
+              </figure>
+            </div>
+          </nav>
+        </div>
+
+      </nav>
+      <!-- Search box -->
+      <div class="container">
             <div class="columns">
                 <div class="column is-offset-4 is-4">
 
@@ -80,30 +101,6 @@
                 </div>
             </div>
         </div>
-    </section>
-
-    <section class="section"> <!-- Large 'current' icon -->
-      <nav class="level">
-
-        <div class="level-item">
-          <nav class="level">
-          <div class="level-item has-text-centered">
-            <div>
-              <p class="title">{{ weather_monday.city }}  </p>
-              <p class="title"> {{ curr_day.current_temperature|floatformat:"0" }} ° C</p>
-              <br>
-              <p class="subtitle">{{ curr_day.suggestion }}</p>
-            </div>
-          </div>
-          <div class="level-item">
-          <figure class="icons">
-              <canvas class="{{ curr_day.icon }}" width="256" height="256"></canvas>
-          </figure>
-        </div>
-        </nav>
-        </div>
-
-      </nav>
     </section>
 
     <section class="section"> <!-- Days of the week in boxes -->
